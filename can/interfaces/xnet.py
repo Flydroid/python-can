@@ -35,16 +35,6 @@ def check_status(result, function, arguments):
         raise NiXnetError(function, result, arguments)
     return result
 
-
-def get_error_message(status_code):
-    """Convert status code to descriptive string."""
-    errmsg = ctypes.create_string_buffer(1024)
-    nican.ncStatusToString(status_code, len(errmsg), errmsg)
-    return errmsg.value.decode("ascii")
-
-
-
-
 class NiXnetBus(BusABC):
     """
     The CAN Bus implemented for the NI-XNET interface.
